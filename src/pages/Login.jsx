@@ -30,6 +30,7 @@ const Login = () => {
   const bio = useInputValidation("");
   const username = useInputValidation("", usernameValidator);
   const password = useStrongPassword();
+  const email=useInputValidation("")
 
   const avatar = useFileHandler("single");
 
@@ -82,6 +83,7 @@ const Login = () => {
     formData.append("bio", bio.value);
     formData.append("username", username.value);
     formData.append("password", password.value);
+    formData.append("email", email.value);
 
     const config = {
       withCredentials: true,
@@ -292,6 +294,17 @@ const Login = () => {
                   variant="outlined"
                   value={password.value}
                   onChange={password.changeHandler}
+                />
+
+                <TextField
+                  required
+                  fullWidth
+                  label="email"
+                  type="email"
+                  margin="normal"
+                  variant="outlined"
+                  value={email.value}
+                  onChange={email.changeHandler}
                 />
 
                 <Button
